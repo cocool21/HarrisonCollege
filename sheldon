@@ -5,5 +5,15 @@ insert into hc_instructors(instructorid ,instructorname, deptid,officenumber) va
 insert into hc_instructors(instructorid ,instructorname, deptid,officenumber) values(005,'Harry Traville',1,23);
 
 
- update HC_INSTRUCTORS set userid =1;
- 
+ select * from HC_USER;
+delete from HC_USER;
+insert into hc_user values(11,'charles','password1','instructor');
+insert into hc_user values(12,'louis','password2','instructor');
+insert into hc_user values(13,'lavi','password3','instructor');
+insert into hc_user values(14,'wendy','password4','instructor');
+insert into hc_user values(15,'harry','password5','instructor');
+ update HC_INSTRUCTORS set userid =11 where instructorid=1;
+  update HC_INSTRUCTORS set userid =12 where instructorid=2;
+   update HC_INSTRUCTORS set userid =13 where instructorid=3;
+    update HC_INSTRUCTORS set userid =14 where instructorid=4;
+     update HC_INSTRUCTORS set userid =15 where instructorid=5;
