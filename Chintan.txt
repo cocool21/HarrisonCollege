@@ -1,0 +1,8 @@
+
+------hc_courses-----------
+
+Insert into hc_courses(courseid,deptid,coursename,coursedescription,credits)
+values ('Bio 101',1,'Intro to basic Bio','Basics in the world of biology',3);
+
+Insert into hc_courses(courseid,deptid,coursename,coursedescription,credits)
+values ('ECE 202',2,'Basics of Computer Engineering','Interface of software with hardware',3);
