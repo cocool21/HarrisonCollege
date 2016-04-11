@@ -1,11 +1,13 @@
 insert into hc
 
 
-insert into hc_user(userid, username,password,hc_type)values(3,'Inst2','password2','Instructor');
-insert into hc_user(userid, username,password,hc_type)values(4,'Inst2','password2','Instructor');
-insert into hc_user(userid, username,password,hc_type)values(5,'Inst2','password2','Instructor');
-insert into hc_user(userid, username,password,hc_type)values(6,'Inst2','password2','Instructor');
-insert into hc_user(userid, username,password,hc_type)values(8,'Inst2','password2','Instructor');
+insert into hc_user(userid, username,password,hc_type)values(3,'Inst2','password2','Julie');
+insert into hc_user(userid, username,password,hc_type)values(4,'Inst2','password2','Yash');
+insert into hc_user(userid, username,password,hc_type)values(5,'Inst2','password2','Sam');
+insert into hc_user(userid, username,password,hc_type)values(6,'Inst2','password2','ChenYe');
+insert into hc_user(userid, username,password,hc_type)values(7,'Inst2','password2','Eric');
+insert into hc_user(userid, username,password,hc_type)values(8,'Inst2','password2','ChinTan');
+
 
 
 insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (1, 'Julie', 1, 'Freshman', 1);
