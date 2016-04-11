@@ -1,0 +1,11 @@
+
+
+
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (1, 'Julie', 1, 'Freshman', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (2, 'ChenYe', 1, 'Senion', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (3, 'Sam', 2, 'Sophomore', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (4, 'Eric', 3, 'Junion', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (5, 'Yash', 3, 'Freshman', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (6, 'Sheldon', 1, 'Freshman', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (7, 'ChinTan', 1, 'Freshman', 1);
+insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (8, 'SysAdmin', 3, 'Freshman', 2);
