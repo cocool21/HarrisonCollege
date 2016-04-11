@@ -6,3 +6,18 @@ values ('Bio 101',1,'Intro to basic Bio','Basics in the world of biology',3);
 
 Insert into hc_courses(courseid,deptid,coursename,coursedescription,credits)
 values ('ECE 202',2,'Basics of Computer Engineering','Interface of software with hardware',3);
+
+
+
+------hc_classes-----------
+
+     
+insert into hc_classes (classid,courseid ,instructorid,classroomid,schedule,semester)
+values (1,'Bio 101',001,1,'Monday 9:00am', 'Fall 2015');
+
+
+
+insert into hc_classes (classid,courseid ,instructorid,classroomid,schedule,semester)
+values (2,'ECE 202',002,2,'Wed 11:00am', 'Spring 2015');
+
+select * from hc_classes;
