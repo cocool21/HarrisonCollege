@@ -1,0 +1,12 @@
+create table hc_user (
+userid int primary key,
+username varchar (20),
+password varchar (20),
+hc_type varchar (10)
+);
+
+alter table hc_students add  userid int;
+alter table hc_instructors add userid int;
+
+alter table hc_students add foreign key (userid) references hc_user(userid);
+alter table hc_instructors add foreign key (userid) references hc_user(userid);

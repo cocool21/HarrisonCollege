@@ -1,0 +1,4 @@
+insert into hc_classrooms(classroomid,buildingname,roomnumber,maxcapacity)values(1, 'Humanities Bldg',100,200);
+insert into hc_classrooms(classroomid,buildingname,roomnumber,maxcapacity)values(2, 'Humanities Bldg',101,50);
+insert into hc_classrooms(classroomid,buildingname,roomnumber,maxcapacity)values(3, 'Humanities Bldg',102,50);
+insert into hc_classrooms(classroomid,buildingname,roomnumber,maxcapacity)values(4, 'Humanities Bldg',103,50);
