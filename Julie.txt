@@ -1,3 +1,13 @@
+insert into hc
+
+
+insert into hc_user(userid, username,password,hc_type)values(3,'Inst2','password2','Instructor');
+insert into hc_user(userid, username,password,hc_type)values(4,'Inst2','password2','Instructor');
+insert into hc_user(userid, username,password,hc_type)values(5,'Inst2','password2','Instructor');
+insert into hc_user(userid, username,password,hc_type)values(6,'Inst2','password2','Instructor');
+insert into hc_user(userid, username,password,hc_type)values(8,'Inst2','password2','Instructor');
+
+
 insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (1, 'Julie', 1, 'Freshman', 1);
 insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (2, 'ChenYe', 1, 'Senion', 2);
 insert into hc_students (studentid, studentname, majorid, yearofentry, userid) values (3, 'Sam', 2, 'Sophomore', 3);
