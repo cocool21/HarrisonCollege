@@ -1,0 +1,66 @@
+create table hc_courses (
+courseid varchar(50) primary key,
+deptid int,
+coursename varchar(50),
+coursedescription varchar(255),
+credits int
+);
+
+create table hc_instructors (
+instructorid int primary key,
+instructorname varchar(50), 
+deptid int,
+officenumber int
+);
+
+create table hc_students (
+studentid int primary key,
+studentname varchar(50),
+majorid int,
+yearofentry varchar(50)
+);
+
+create table hc_classes (
+classid int primary key,
+courseid varchar(50),
+instructorid int,
+classroomid int,
+schedule varchar(50),
+semester varchar(50)
+);
+
+create table hc_classrooms (
+classroomid int primary key,
+buildingname varchar(50),
+roomnumber int,
+maxcapacity int
+);
+
+create table hc_departments (
+deptid int primary key,
+deptname varchar(50)
+);
+
+create table hc_studentreg (
+regid int primary key,
+studentid int,
+classid int,
+grade varchar(5)
+);
+
+create table hc_majors (
+majorid int primary key,
+deptid int,
+majorname varchar(50)
+);
+
+
+alter table hc_courses add foreign key (deptid) references hc_departments(deptid);
+alter table hc_instructors add foreign key (deptid) references hc_departments(deptid);
+alter table hc_students add foreign key (majorid) references hc_majors(majorid);
+alter table hc_classes add foreign key (courseid) references hc_courses(courseid);
+alter table hc_classes add foreign key (instructorid) references hc_instructors(instructorid);
+alter table hc_classes add foreign key (classroomid) references hc_classrooms(classroomid);
+alter table hc_studentreg add foreign key (studentid) references hc_students(studentid);
+alter table hc_studentreg add foreign key (classid) references hc_classes(classid);
+alter table hc_majors add foreign key (deptid) references hc_departments(deptid);
