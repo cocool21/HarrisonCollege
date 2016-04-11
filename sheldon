@@ -5,3 +5,5 @@ insert into hc_instructors(instructorid ,instructorname, deptid,officenumber) va
 insert into hc_instructors(instructorid ,instructorname, deptid,officenumber) values(005,'Harry Traville',1,23);
 
 
+ update HC_INSTRUCTORS set userid =1;
+ 
