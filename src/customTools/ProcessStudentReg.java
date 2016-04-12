@@ -24,6 +24,10 @@ public static long getNewId(){
 			System.out.println(e);
 		}finally{
 			em.close();
+			if(newid==0){
+			newid=1;
+			}
+			
 			return newid;
 		} 
 }
@@ -34,7 +38,7 @@ public static void addClass(long studentid,long classid){
 	c.setClassid(classid);
 	s.setStudentid(studentid);
 	record.setGrade("");
-	record.setRegid(getNewId()+1);
+	record.setRegid(getNewId());
 	record.setHcClass(c);
 	record.setHcStudent(s);
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -80,9 +84,16 @@ public static HcStudentreg getRecord(long studentid,long classid){
 	EntityManager em=DBUtil.getEmFactory().createEntityManager();
 	String qString="SELECT r FROM HcStudentreg r where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 	Query q=em.createQuery(qString,model.HcStudentreg.class);
-	HcStudentreg record=new HcStudentreg();
+	q.setParameter("studentid", studentid);
+	q.setParameter("classid", classid);
+	HcStudentreg record=null;
+	List<HcStudentreg> list=null;
 	try{
-		record=(HcStudentreg)q.getSingleResult();
+		list= q.getResultList();
+		if(list==null||list.isEmpty()){
+			record=null;
+		}
+		record=list.get(0);
 		}catch(Exception e){
 			System.out.println(e);
 		}finally{
