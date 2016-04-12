@@ -1,6 +1,5 @@
 import customTools.DBUtil;
 import model.HcClass;
-import model.HcCours;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -52,6 +51,8 @@ public class ViewAllClasses extends HttpServlet {
 			request.setAttribute("classlist", classList);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			em.close();
 		}
 		request.getRequestDispatcher("AllClassList.jsp").forward(request, response);
 	}
