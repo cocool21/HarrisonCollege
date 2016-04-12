@@ -51,9 +51,9 @@ public class GetRosterByClass extends HttpServlet {
 		System.out.println("classid = " + classid);
 		
 	
-			List<HcStudent> roster = null;
+			List<HcStudentreg> roster = null;
 
-			roster = ProcessStudentReg.getStudentList(classid);
+			roster = getRoster.getStudentRoster(classid);
 
 			request.setAttribute("roster", roster);
 			
