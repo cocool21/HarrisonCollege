@@ -23,7 +23,7 @@ Class: <c:out value="${classid}" /><br />
 				<td><c:out value="${student.hcStudent.studentid}" /></td>
 				<td><c:out value="${student.hcStudent.studentname}" /></td>
 				<td><c:out value="${student.grade}" /></td>
-			    <td><form action="SignUpServlet" method="post">
+			    <td><form action="AssignGrade" method="post">
 			    <input type="hidden" name="student" value="${student }">
 			    <input type="text" name="grade" value="${student.grade}">
 			    <input type="submit" value="Update Grade"></form>
