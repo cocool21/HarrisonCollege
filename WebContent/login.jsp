@@ -23,8 +23,8 @@
 					<p>New User Sign Up Here!</p>
 					Name:<br> <input type="text" name="name "><br>
 					User Name:<br> <input type="text"
-						name="username "><br> Password:<br> <input
-						type="text" name="password"><br>
+						name="newusername"><br> Password:<br> <input
+						type="text" name="newpassword"><br>
 					<br> <input type="submit" value="Sign Up">
 				</form>
 			</td>
