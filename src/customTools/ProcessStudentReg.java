@@ -122,7 +122,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 		
 	}
 
-public List<HcStudent> getStudentList(long classid){
+public static List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	String qString = "Select r from HcStudentreg r where r.hcclass.classid= :classid";

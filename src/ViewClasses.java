@@ -1,11 +1,22 @@
 
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import customTools.DBUtil;
+import model.HcClass;
+import model.HcInstructor;
+
+
 
 /**
  * Servlet implementation class ViewClasses
@@ -34,6 +45,36 @@ public class ViewClasses extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+	HttpSession session= request.getSession();
+	
+	long instructorid= (long) session.getAttribute("instructorid");
+	
+	
+	
+	int c=001;
+		
+		List<HcClass> classList = null;
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "SELECT h FROM HcInstructor h "
+				+ "where h.instructorid="+ instructorid;
+			
+		TypedQuery<HcInstructor> q = em.createQuery(qString, HcInstructor.class);
+		
+		try {
+			HcInstructor found=q.getSingleResult();
+			classList=found.getHcClasses();
+			request.setAttribute("classList", classList);
+			String name=found.getInstructorname();
+			request.setAttribute("Name", name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		request.getRequestDispatcher("ClassList.jsp").forward(request, response);
 	}
 
-}
+		
+	}
+
+
