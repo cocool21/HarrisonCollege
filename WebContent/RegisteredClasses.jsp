@@ -21,6 +21,7 @@
 			<th>Credits</th>
 			<th>action</th>
 		</tr>
+		
 		<c:forEach items="${registeredlist}" var="registered">
 			<tr>
 				<td><c:out value="${registered.classid}" /></td>
@@ -31,9 +32,11 @@
 				<td><c:out value="${registered.schedule}" /></td>
 				<td><c:out value="${registered.semester}" /></td>
 				<td><c:out value="${registered.hcCours.credits}" /></td>
-				<td><input type="submit" name="drop" value="drop button" ></td>
+				<td><form action="DropServlet" method="Post">
+				<input type="submit" name="drop" value="{registered.classid}" ></form></td>
 			</tr>
 		</c:forEach>
+		
 		<form action="AddDropServlet" method="Post">
 		
 		<input type="submit" name="add" value="add button" >
