@@ -58,7 +58,7 @@ public class AssignGrade extends HttpServlet {
 			em.close();
 		}
 		
-		request.getRequestDispatcher("displayRoster.jsp");
+		request.getRequestDispatcher("GetRosterByClass.java");
 	}
 
 }
