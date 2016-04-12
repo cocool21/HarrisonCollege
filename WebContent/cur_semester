@@ -1,0 +1,6 @@
+create table HC_cur_SEMESTER (
+SEMESTERid int primary key,
+currentsem varchar(50)
+);
+
+insert into hc_cur_semester values (1, 'Spring 2016');
