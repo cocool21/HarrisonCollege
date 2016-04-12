@@ -19,16 +19,16 @@
 			<th>Semester</th>
 			<th>Credits</th>
 		</tr>
-		<c:forEach items="${classlist}" var="class">
+		<c:forEach items="${classlist}" var="aclass">
 			<tr>
-				<td><c:out value="${class.classid}" /></td>
-				<td><c:out value="${class.hcCours.courseid}" /></td>
-				<td><c:out value="${class.hcCours.coursename}" /></td>
-				<td><c:out value="${class.hcInstructor.instructorname}" /></td>
-				<td><c:out value="${class.hcClassroom.roomnumber + class.hcClassroom.buildingname}" /></td>
-				<td><c:out value="${class.schedule}" /></td>
-				<td><c:out value="${class.semester}" /></td>
-				<td><c:out value="${class.hcCours.credits}" /></td>
+				<td><c:out value="${aclass.classid}" /></td>
+				<td><c:out value="${aclass.hcCours.courseid}" /></td>
+				<td><c:out value="${aclass.hcCours.coursename}" /></td>
+				<td><c:out value="${aclass.hcInstructor.instructorname}" /></td>
+				<td><c:out value="${aclass.hcClassroom.roomnumber + aclass.hcClassroom.buildingname}" /></td>
+				<td><c:out value="${aclass.schedule}" /></td>
+				<td><c:out value="${aclass.semester}" /></td>
+				<td><c:out value="${aclass.hcCours.credits}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
