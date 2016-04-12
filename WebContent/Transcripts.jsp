@@ -7,6 +7,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<p>${Student ID}<p>
+<br>
+<br>
+<p>${Student Name}</p>
+<table>
+<tr>
+			
+			<th>Class ID</th>
+			<th>Semester</th>
+			<th>Grade</th>
+			
+		</tr>
+		<c:forEach items="${Transcript}" var="Transcript">
+			<tr>
+				<td><c:out value="${Transcript.classid}" /></td>
+				<td><c:out value="${Transcript.semester}" /></td>
+				<td><c:out value="${Transcript.grade}" /></td>
+				
+			</tr>
+		</c:forEach>
+		<form action="RegisteredClasses" method="Post">
+				<input type="submit" name="Buy" value="{Transcript.classid}" ></form> <!--//garbage value --> 
+</table>
 </body>
 </html>

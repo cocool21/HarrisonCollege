@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTools.DBUtil;
+import customTools.ProcessStudentReg;
 import model.HcStudent;
+import model.HcStudentreg;
 import model.HcUser;
 
 /**
@@ -47,15 +49,14 @@ public class ViewTranscripts extends HttpServlet {
 		// TODO Auto-generated method stub
 HttpSession session = request.getSession();
 		
-		List<HcStudent> registeredList = null;
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        List<HcStudentreg> Transcript = null;
+		long studentid=(long) session.getAttribute("studentid");
+        
 		
-	
-		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + ((HcUser)session.getAttribute("usersession"))+ " ORDER BY h.Studentid";
-		TypedQuery<HcStudent> q = em.createQuery(qString, HcStudent.class);
-		try {
-			registeredList = q.getResultList();
-			request.setAttribute("registeredlist", registeredList);
+        
+        try {
+        	Transcript = ProcessStudentReg.getTranscript(studentid);
+        	request.setAttribute("Transcript", Transcript);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
