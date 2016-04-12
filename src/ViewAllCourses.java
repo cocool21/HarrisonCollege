@@ -1,4 +1,8 @@
-
+import customTools.DBUtil;
+import model.HcCours;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -35,7 +39,16 @@ public class ViewAllCourses extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		List<HcCours> courseList = null;
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "SELECT h FROM HcCours h ORDER BY h.courseid";
+		TypedQuery<HcCours> q = em.createQuery(qString, HcCours.class);
+		try {
+			courseList = q.getResultList();
+			request.setAttribute("courselist", courseList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		request.getRequestDispatcher("AllCourseList.jsp").forward(request, response);
 	}
 
