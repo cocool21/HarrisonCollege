@@ -30,5 +30,9 @@ Class: <c:out value="${classid}" /><br />
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+	<form action="ReturnToMenu" method="post">
+	<input type="submit" value="Return to menu">
+</form>
 </body>
 </html>
