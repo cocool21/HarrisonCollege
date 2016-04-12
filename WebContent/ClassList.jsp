@@ -22,6 +22,7 @@ Welcome Prof. ${Name}
 			<th>Classroom building</th>
 			<th>Schedule</th>
 			<th>Semester</th>
+			<th>Select</th>
 
 
 		</tr>
@@ -33,6 +34,12 @@ Welcome Prof. ${Name}
 				<td><c:out value="${a.hcClassroom.buildingname}" /></td>
 				<td><c:out value="${a.schedule}" /></td>
 				<td><c:out value="${a.semester}" /></td>
+				<td> 
+				<form action="GetRosterByClass" method="post">
+				<input type="hidden" name="classid" value="${a.classid}" />
+  <input type="submit" name="instructor" value="Get Roster By Class" > <br>
+</form>
+</td>
 			</tr>
 		</c:forEach>
 	</table>

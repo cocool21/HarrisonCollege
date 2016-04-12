@@ -9,6 +9,7 @@ import model.HcClass;
 import model.HcStudentreg;
 import model.HcStudent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessStudentReg {
@@ -135,7 +136,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 
 public static List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
-	List<HcStudent> list = null;
+	List<HcStudent> list = new ArrayList<HcStudent>();
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	String qString = "Select r from HcStudentreg r where r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
@@ -143,13 +144,13 @@ public static List<HcStudent> getStudentList(long classid){
 	try {
 
 		records = q.getResultList();
-		if (records== null || records.isEmpty()||records.size()==0){
+		if (records== null || records.isEmpty()){
 			records = null;
-			list=null;
+			list = null;
 		}else{
 			for(HcStudentreg record:records){
-		    list.add(record.getHcStudent());	
-		}
+			list.add(record.getHcStudent());
+			}
 		}
 	} catch (Exception e) {
 		System.out.println(e);
