@@ -6,18 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import customTools.DBUtil;
+import customTools.ProcessStudentReg;
+import model.HcClass;
 /**
- * Servlet implementation class AssignGrades
+ * Servlet implementation class AddServlet
  */
-@WebServlet("/AssignGrades")
-public class AssignGrades extends HttpServlet {
+@WebServlet("/AddServlet")
+public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AssignGrades() {
+    public AddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,17 +30,27 @@ public class AssignGrades extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	// From Chenye	
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		
-	//	ProcessClasses.update
+		long studentid = (long) session.getAttribute("studentid");
+		long classid = Long.parseLong(request.getParameter("add"));
+		
+		ProcessStudentReg.addClass(studentid, classid);
+		
+		request.getRequestDispatcher("RegisteredClasses.java").forward(request, response);
+		
+		
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-
+package servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,22 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTools.DBUtil;
-import model.HcClass;
-import model.HcInstructor;
-
-
+import model.HcStudent;
+import model.HcUser;
 
 /**
- * Servlet implementation class ViewClasses
+ * Servlet implementation class Transcripts
  */
-@WebServlet("/ViewClasses")
-public class ViewClasses extends HttpServlet {
+@WebServlet("/ViewTranscripts")
+public class ViewTranscripts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewClasses() {
+    public ViewTranscripts() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,44 +35,31 @@ public class ViewClasses extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	HttpSession session= request.getSession();
-	
-	long instructorid= (long) session.getAttribute("instructorid");
-	
-	
-	
-	int c=001;
+		// TODO Auto-generated method stub
+HttpSession session = request.getSession();
 		
-		List<HcClass> classList = null;
+		List<HcStudent> registeredList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT h FROM HcInstructor h "
-				+ "where h.instructorid="+ instructorid;
-			
-		TypedQuery<HcInstructor> q = em.createQuery(qString, HcInstructor.class);
 		
+	
+		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + ((HcUser)session.getAttribute("usersession"))+ " ORDER BY h.Studentid";
+		TypedQuery<HcStudent> q = em.createQuery(qString, HcStudent.class);
 		try {
-			HcInstructor found=q.getSingleResult();
-			classList=found.getHcClasses();
-			request.setAttribute("classList", classList);
-			String name=found.getInstructorname();
-			request.setAttribute("Name", name);
+			registeredList = q.getResultList();
+			request.setAttribute("registeredlist", registeredList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		request.getRequestDispatcher("ClassList.jsp").forward(request, response);
+		request.getRequestDispatcher("Transcripts.jsp").forward(request, response);
 	}
 
-		
-	}
-
-
+}
