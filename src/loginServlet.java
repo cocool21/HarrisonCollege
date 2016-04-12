@@ -60,7 +60,8 @@ public class loginServlet extends HttpServlet {
 				long instructorid=db.getTeacherID(u.getUserid());
 				//System.out.println("instructor  "+instructorid);
 				session.setAttribute("teacherid", instructorid);
-				//request.getRequestDispatcher("").forward(request, response);
+				
+				request.getRequestDispatcher("InstructorMenu.jsp").forward(request, response);
 			}
 			
 		}

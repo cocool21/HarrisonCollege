@@ -45,15 +45,30 @@ public class GetRosterByClass extends HttpServlet {
 		
 
 //		long classid = Long.parseLong(session.getAttribute("classid"));
-		long classid = (long) session.getAttribute("classid");
+//		long classid = (long) session.getAttribute("classid");
 		
+/*      
+ * 		We could add another Servlet before this page and 
+ * 		after ClassList.jsp to put selected rows classid in session.	
+ *  	We are not using this variable anywhere else	
+ */
+		
+		String classid = request.getParameter("classid");
+		
+		long classid2= Long.parseLong(classid);
+		
+	
+	
+	
+		System.out.println(classid2);
+	
 
-		System.out.println("classid = " + classid);
+		System.out.println("classid = " + classid2);
 		
 	
 			List<HcStudent> roster = null;
 
-			roster = ProcessStudentReg.getStudentList(classid);
+			roster = ProcessStudentReg.getStudentList(classid2);
 
 			request.setAttribute("roster", roster);
 			

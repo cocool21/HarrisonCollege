@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import customTools.DBUtil;
 import model.HcClass;
 import model.HcInstructor;
+import model.HcUser;
 
 
 
@@ -47,7 +48,7 @@ public class ViewClasses extends HttpServlet {
 	
 	HttpSession session= request.getSession();
 	
-	long instructorid= (long) session.getAttribute("instructorid");
+	long instructorid= (long) session.getAttribute("teacherid");
 	
 	
 	
@@ -63,12 +64,17 @@ public class ViewClasses extends HttpServlet {
 		try {
 			HcInstructor found=q.getSingleResult();
 			classList=found.getHcClasses();
-			request.setAttribute("classList", classList);
+		
+			
+			session.setAttribute("classList", classList);
 			String name=found.getInstructorname();
-			request.setAttribute("Name", name);
+			session.setAttribute("Name", name);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		
 		
 		request.getRequestDispatcher("ClassList.jsp").forward(request, response);
