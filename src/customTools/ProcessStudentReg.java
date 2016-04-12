@@ -135,6 +135,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 
 public static List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
+	List<HcStudent> list = null;
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	String qString = "Select r from HcStudentreg r where r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
@@ -142,22 +143,20 @@ public static List<HcStudent> getStudentList(long classid){
 	try {
 
 		records = q.getResultList();
-		if (records== null || records.isEmpty()){
+		if (records== null || records.isEmpty()||records.size()==0){
 			records = null;
+			list=null;
+		}else{
+			for(HcStudentreg record:records){
+		    list.add(record.getHcStudent());	
+		}
 		}
 	} catch (Exception e) {
 		System.out.println(e);
 	} finally {
         em.close();
 	}
-	List<HcStudent> list=null;
-	if(records!=null){
-    for(HcStudentreg record:records){
-    	list.add(record.getHcStudent());
-    }
-    }else{
-    	list=null;
-    }
+	
     return list;
 }
 public static List<HcStudentreg> getTranscript(long studentid){

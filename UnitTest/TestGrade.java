@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+//Please run tests in order of add,drop,grade,studentlist and transcript.
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;

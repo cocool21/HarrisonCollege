@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import customTools.ProcessStudentReg;
 
+//Please run tests in order of add,drop,grade,studentlist and transcript.
+
 public class TestDrop {
 	@Test
 	   public void test_drop() {

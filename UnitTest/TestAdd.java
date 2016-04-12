@@ -7,6 +7,7 @@ import org.junit.Test;
 import model.HcStudentreg;
 import customTools.ProcessStudentReg;
 
+//Please run tests in order of add,drop,grade,studentlist and transcript.
 public class TestAdd {
 	@Test
 	   public void test_add() {
