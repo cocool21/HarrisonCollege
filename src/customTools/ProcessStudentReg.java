@@ -55,7 +55,7 @@ public static void dropClass(long studentid,long classid){
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	EntityTransaction trans = em.getTransaction();
 	String qString = "update HcStudentreg r set r.grade = :grade "
-			+ "where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+			+ "where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 	q.setParameter("grade", "W");
 	q.setParameter("studentid", studentid);
@@ -78,7 +78,7 @@ public static void dropClass(long studentid,long classid){
 }
 public static HcStudentreg getRecord(long studentid,long classid){
 	EntityManager em=DBUtil.getEmFactory().createEntityManager();
-	String qString="SELECT r FROM HcStudentreg r where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+	String qString="SELECT r FROM HcStudentreg r where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 	Query q=em.createQuery(qString,model.HcStudentreg.class);
 	HcStudentreg record=new HcStudentreg();
 	try{
@@ -98,7 +98,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		String qString = "update HcStudentreg r set r.grade = :grade "
-				+ "where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+				+ "where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 		TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 		q.setParameter("grade", grade);
 		q.setParameter("studentid", studentid);
@@ -125,7 +125,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 public static List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
-	String qString = "Select r from HcStudentreg r where r.hcclass.classid= :classid";
+	String qString = "Select r from HcStudentreg r where r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 	q.setParameter("classid", classid);
 	try {
