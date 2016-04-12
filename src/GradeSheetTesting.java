@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,65 +11,68 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class GradeSheetTesting
- */
+import model.HcClass;
+import model.HcInstructor;
+import model.HcStudentreg;
+
 @WebServlet("/GradeSheetTesting")
 public class GradeSheetTesting extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GradeSheetTesting() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+	public GradeSheetTesting() {
+		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	    doPost(request,response);
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		
-		
+
 		HttpSession session = request.getSession();
-//		List<DcuAccount> accountList=null;
-//		AccountDetailDb accDb = new AccountDetailDb();
+		List<HcClass> classList=null;
 		long count=0; 
 		int user_id=0;
 		ViewGradeSheetDb vgs = new ViewGradeSheetDb();
+		List<HcStudentreg> studentClassList=null;
 
-		
+
 		//assume instructorid in session is available to me
-//		session.setAttribute("instructorid", 1);
-//		
-//		user_id = (int)session.getAttribute("instructorid");
-		
+		//		session.setAttribute("instructorid", 1);
+		//		
+		//		user_id = (int)session.getAttribute("instructorid");
+
 
 		//count = vgs.findAnyClasses((int)session.getAttribute("instructorid"));
 		count = vgs.findAnyClasses(1);
 
-System.out.println("==>count<==========" + count);
-//		if(count > 0)
-//		{
-//		
-//			accountList = accDb.findAllAccountList((int)session.getAttribute("userid")).getResultList();
-//			//accountList = accDb.findAllAccountList((long)1).getResultList();
-//
-//			//System.out.println("We have something in the assignmentList");
-//			request.setAttribute("accountList", accountList);
-//			request.getRequestDispatcher("/AccountDetail.jsp").forward(request, response);
-//		}
+		System.out.println("==>count<==========" + count);
+		String message="count is " + count;
+
+//		request.setAttribute("message", message);
+//		request.getRequestDispatcher("/gradeSheetOutput.jsp").forward(request, response);
+//Can't do at both places
+
+
+		if(count > 0)
+		{
+			System.out.println("im here");
+			classList = vgs.findAllClassesList(1).getResultList();
+			
+			
+			studentClassList = vgs.findAllClassStudentList(1).getResultList();
+			
+			
+
+			System.out.println("We have something in the assignmentList:" + classList);
+			request.setAttribute("message",classList);
+			request.getRequestDispatcher("/gradeSheetOutput.jsp").forward(request, response);
+		}
 	}
 
 }

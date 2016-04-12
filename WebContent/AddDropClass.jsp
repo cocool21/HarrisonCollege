@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>GradeSheetTesting</title>
+<title>Insert title here</title>
 </head>
 <body>
-<form action="GradeSheetTesting" method="post">
-<input type="submit" name="begin"></input>
-</form>
+
 </body>
 </html>
