@@ -36,6 +36,7 @@ public class SignUpServlet extends HttpServlet {
 		dblogin db =new dblogin();
 		db.insertNewUser(name,user_name,password);
 		db.insertNewStudent(name,user_name,year ,major);
+		//request.getRequestDispatcher("").forward(request, response);
 		
 		
 	}
