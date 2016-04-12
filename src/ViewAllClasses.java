@@ -43,7 +43,9 @@ public class ViewAllClasses extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<HcClass> classList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT h FROM HcClass h ORDER BY h.classid";
+		String qString = "SELECT h FROM HcClass h  inner join hc_cur_semester hcs "
+				+ "on h.semester = hcs.currentsem ORDER BY h.classid";
+			
 		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		try {
 			classList = q.getResultList();

@@ -11,6 +11,7 @@
 		<class>model.HcStudentreg</class>
 		<class>model.HcStudent</class>
 		<class>model.HcUser</class>
+		<class>model.HcCurSemester</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
