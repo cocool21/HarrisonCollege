@@ -149,4 +149,25 @@ public static List<HcStudent> getStudentList(long classid){
     }
     return list;
 }
+public static List<HcStudentreg> getTranscript(long studentid){
+	List<HcStudentreg> records=null;
+	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+	String qString = "Select r from HcStudentreg r where r.hcStudent.studentid= :studentid";
+	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
+	q.setParameter("studentid", studentid);
+	try {
+
+		records = q.getResultList();
+		if (records== null || records.isEmpty()){
+			records = null;
+		}
+	} catch (Exception e) {
+		System.out.println(e);
+	} finally {
+        em.close();
+	}
+	
+    return records;
+}
+
 }
