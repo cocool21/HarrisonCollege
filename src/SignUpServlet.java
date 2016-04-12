@@ -30,9 +30,13 @@ public class SignUpServlet extends HttpServlet {
 		String name=request.getParameter("name");
 		String user_name =request.getParameter("newusername");
 		String password = request.getParameter("newpassword");
-		
+		String year=request.getParameter("year");
+		long major =Long.parseLong(request.getParameter("major"));
+		System.out.println("hello"+year + major);
 		dblogin db =new dblogin();
 		db.insertNewUser(name,user_name,password);
+		db.insertNewStudent(name,user_name,year ,major);
+		
 		
 	}
 

@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 
 import customTools.DBUtil;
 import model.HcInstructor;
+import model.HcMajor;
 import model.HcStudent;
 import model.HcUser;
 public class dblogin {
@@ -82,6 +83,60 @@ public class dblogin {
 		return (long)query.getSingleResult();
 		
 		
+	}
+	public void insertNewStudent(String name ,String user_name ,String year ,long major)
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		HcStudent hcs = new HcStudent();
+		HcMajor hcm =new HcMajor();
+		HcUser hcu =new HcUser();
+		hcm.setMajorid(major);
+		hcs.setHcMajor(hcm);
+		hcs.setStudentname(name);
+		hcs.setYearofentry(year);
+		hcu.setUserid(getUseridfromTable(user_name));//add your method to get id
+		hcs.setHcUser(hcu);
+		hcs.setStudentid(getNewStudentID()+1);
+		
+		
+		
+		trans.begin();
+		try
+		{
+			System.out.println("im here try");
+			em1.persist(hcs);
+			em1.flush();
+			trans.commit();
+		}
+		catch(Exception e)
+		{
+			
+			trans.rollback();
+		}
+		finally
+		{
+			em1.close();
+		}
+		
+		
+	}
+	protected long getUseridfromTable(String username)
+	{
+		
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		TypedQuery<Long> query =em1.createQuery("SELECT distinct(h.userid) FROM HcUser h where h.username=:user_name",Long.class)
+				.setParameter("user_name", username);
+		
+		return (long) query.getSingleResult();
+	}
+	
+	public long getNewStudentID()
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		TypedQuery query =em1.createQuery("SELECT max(h.studentid) FROM HcStudent h ",  HcStudent.class);
+		System.out.println((long)query.getSingleResult());
+		return (long)query.getSingleResult();
 	}
 
 }
