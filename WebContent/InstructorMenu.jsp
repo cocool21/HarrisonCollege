@@ -18,7 +18,9 @@ h2{
 <title>Instructor Menu</title>
 </head>
 <h1>Harrison College</h1>
-<h2>Instructor Menu</h2>
+
+<h2>Welcome: </h2> 
+${teacherid};
 <body>
 
  <form action="ViewAllCourses" method="post">

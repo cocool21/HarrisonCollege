@@ -9,6 +9,7 @@ import model.HcClass;
 import model.HcStudentreg;
 import model.HcStudent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessStudentReg {
@@ -24,6 +25,10 @@ public static long getNewId(){
 			System.out.println(e);
 		}finally{
 			em.close();
+			if(newid==0){
+			newid=1;
+			}
+			
 			return newid;
 		} 
 }
@@ -34,7 +39,7 @@ public static void addClass(long studentid,long classid){
 	c.setClassid(classid);
 	s.setStudentid(studentid);
 	record.setGrade("");
-	record.setRegid(getNewId()+1);
+	record.setRegid(getNewId());
 	record.setHcClass(c);
 	record.setHcStudent(s);
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -55,7 +60,7 @@ public static void dropClass(long studentid,long classid){
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	EntityTransaction trans = em.getTransaction();
 	String qString = "update HcStudentreg r set r.grade = :grade "
-			+ "where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+			+ "where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 	q.setParameter("grade", "W");
 	q.setParameter("studentid", studentid);
@@ -78,11 +83,18 @@ public static void dropClass(long studentid,long classid){
 }
 public static HcStudentreg getRecord(long studentid,long classid){
 	EntityManager em=DBUtil.getEmFactory().createEntityManager();
-	String qString="SELECT r FROM HcStudentreg r where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+	String qString="SELECT r FROM HcStudentreg r where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 	Query q=em.createQuery(qString,model.HcStudentreg.class);
-	HcStudentreg record=new HcStudentreg();
+	q.setParameter("studentid", studentid);
+	q.setParameter("classid", classid);
+	HcStudentreg record=null;
+	List<HcStudentreg> list=null;
 	try{
-		record=(HcStudentreg)q.getSingleResult();
+		list= q.getResultList();
+		if(list==null||list.isEmpty()){
+			record=null;
+		}
+		record=list.get(0);
 		}catch(Exception e){
 			System.out.println(e);
 		}finally{
@@ -98,7 +110,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		String qString = "update HcStudentreg r set r.grade = :grade "
-				+ "where r.hcstudent.studentid = :studentid and r.hcclass.classid= :classid";
+				+ "where r.hcStudent.studentid = :studentid and r.hcClass.classid= :classid";
 		TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 		q.setParameter("grade", grade);
 		q.setParameter("studentid", studentid);
@@ -124,10 +136,36 @@ public static void updateGrade(long studentid,long classid,String grade){
 
 public static List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
+	List<HcStudent> list = new ArrayList<HcStudent>();
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
-	String qString = "Select r from HcStudentreg r where r.hcclass.classid= :classid";
+	String qString = "Select r from HcStudentreg r where r.hcClass.classid= :classid";
 	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
 	q.setParameter("classid", classid);
+	try {
+
+		records = q.getResultList();
+		if (records== null || records.isEmpty()){
+			records = null;
+			list = null;
+		}else{
+			for(HcStudentreg record:records){
+			list.add(record.getHcStudent());
+			}
+		}
+	} catch (Exception e) {
+		System.out.println(e);
+	} finally {
+        em.close();
+	}
+	
+    return list;
+}
+public static List<HcStudentreg> getTranscript(long studentid){
+	List<HcStudentreg> records=null;
+	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+	String qString = "Select r from HcStudentreg r where r.hcStudent.studentid= :studentid";
+	TypedQuery<HcStudentreg> q = em.createQuery(qString, model.HcStudentreg.class);
+	q.setParameter("studentid", studentid);
 	try {
 
 		records = q.getResultList();
@@ -139,14 +177,8 @@ public static List<HcStudent> getStudentList(long classid){
 	} finally {
         em.close();
 	}
-	List<HcStudent> list=null;
-	if(records!=null){
-    for(HcStudentreg record:records){
-    	list.add(record.getHcStudent());
-    }
-    }else{
-    	list=null;
-    }
-    return list;
+	
+    return records;
 }
+
 }

@@ -1,28 +1,32 @@
-import customTools.DBUtil;
-import model.HcClass;
+package servlets;
 
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import customTools.DBUtil;
+import customTools.ProcessStudentReg;
+import model.HcClass;
 /**
- * Servlet implementation class ViewAllClasses
+ * Servlet implementation class AddDropServlet
  */
-@WebServlet("/ViewAllClasses")
-public class ViewAllClasses extends HttpServlet {
+@WebServlet("/AddDropServlet")
+public class ClassAddListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllClasses() {
+    public ClassAddListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +37,7 @@ public class ViewAllClasses extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -40,6 +45,7 @@ public class ViewAllClasses extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		List<HcClass> classList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String qString = "SELECT h FROM HcClass h  inner join hc_cur_semester hcs "
@@ -48,13 +54,13 @@ public class ViewAllClasses extends HttpServlet {
 		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		try {
 			classList = q.getResultList();
-			request.setAttribute("classlist", classList);
+			request.setAttribute("addlist", classList);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			em.close();
 		}
-		request.getRequestDispatcher("AllClassList.jsp").forward(request, response);
+		request.getRequestDispatcher("AddList.jsp").forward(request, response);
 	}
 
-}
+	}
+
+

@@ -26,5 +26,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<form action="ReturnToMenu" method="post">
+		<input type="submit" value="Return to menu">
+	</form>
 </body>
 </html>

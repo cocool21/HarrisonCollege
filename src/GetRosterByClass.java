@@ -1,11 +1,18 @@
 
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import customTools.ProcessStudentReg;
+import model.HcStudent;
+import model.HcStudentreg;
 
 /**
  * Servlet implementation class GetRosterByClass
@@ -34,6 +41,33 @@ public class GetRosterByClass extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		
+
+//		long classid = Long.parseLong(session.getAttribute("classid"));
+//		long classid = (long) session.getAttribute("classid");
+		
+/*      
+ * 		We could add another Servlet before this page and 
+ * 		after ClassList.jsp to put selected rows classid in session.	
+ *  	We are not using this variable anywhere else	
+ */
+		
+		String classid = request.getParameter("classid");
+		
+		long classid2= Long.parseLong(classid);
+		
+		
+			List<HcStudentreg> roster = null;
+			
+			roster = getRoster.getStudentRoster(classid2);
+
+			request.setAttribute("roster", roster);
+				
+			request.getRequestDispatcher("/displayRoster.jsp").forward(request, response);
+
+		}	
+		
 	}
 
-}
+

@@ -47,7 +47,23 @@ public class loginServlet extends HttpServlet {
 			HttpSession session= request.getSession() ;
 			HcUser u =user.get(0);//gets 1st user out of list as resultlist contains one user
 			session.setAttribute("usersession", u);
-			System.out.println(u.getUserid() + u.getPassword() +u.getUsername());
+			System.out.println(u.getUserid() + u.getPassword() +u.getUsername()+u.getHcType());
+			if(u.getHcType().equalsIgnoreCase("student"))
+					{
+				     long sid= db.getStudentID(u.getUserid());
+				     //System.out.println("student  "+sid);
+				     session.setAttribute("studentid", sid);
+				     request.getRequestDispatcher("/StudentMenu.jsp").forward(request, response);
+					}
+			if(u.getHcType().equalsIgnoreCase("instructor"))
+			{
+				long instructorid=db.getTeacherID(u.getUserid());
+				//System.out.println("instructor  "+instructorid);
+				session.setAttribute("teacherid", instructorid);
+				
+				request.getRequestDispatcher("InstructorMenu.jsp").forward(request, response);
+			}
+			
 		}
 		
 	}

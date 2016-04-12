@@ -48,6 +48,8 @@ public class ViewAllCourses extends HttpServlet {
 			request.setAttribute("courselist", courseList);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			em.close();
 		}
 		request.getRequestDispatcher("AllCourseList.jsp").forward(request, response);
 	}
