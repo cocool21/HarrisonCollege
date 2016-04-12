@@ -93,7 +93,7 @@ public static HcStudentreg getRecord(long studentid,long classid){
 public static void updateGrade(long studentid,long classid,String grade){
 	HcStudentreg record=getRecord(studentid,classid);
 	if(record.getGrade().equalsIgnoreCase("w")){
-		System.out.println("Student dropped class");
+		System.out.println("Student dropped class, no grade will be added");
 	}else{
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
@@ -122,7 +122,7 @@ public static void updateGrade(long studentid,long classid,String grade){
 		
 	}
 
-public List getStudentList(long classid){
+public List<HcStudent> getStudentList(long classid){
 	List<HcStudentreg> records=null;
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	String qString = "Select r from HcStudentreg r where r.hcclass.classid= :classid";
