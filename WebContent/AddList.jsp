@@ -21,7 +21,7 @@
 			<th>Credits</th>
 			<th>action</th>
 		</tr>
-		<form action="AddServlet" method="Post">
+
 		<c:forEach items="${addlist}" var="add">
 			<tr>
 				<td><c:out value="${add.classid}" /></td>
@@ -33,9 +33,8 @@
 				<td><c:out value="${add.schedule}" /></td>
 				<td><c:out value="${add.semester}" /></td>
 				<td><c:out value="${add.hcCours.credits}" /></td>
-				<td><form><input type="submit" name="add" value="${add.classid}" ></form></td>
+				<td><form action="AddServlet" method="Post"><input type="submit" name="add" value="${add.classid}" ></form></td>
 			</tr>
 		</c:forEach>
-		</form>
 </body>
 </html>
