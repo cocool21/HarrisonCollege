@@ -42,16 +42,7 @@ public class GetRosterByClass extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session = request.getSession();
-		
-
-//		long classid = Long.parseLong(session.getAttribute("classid"));
-//		long classid = (long) session.getAttribute("classid");
-		
-/*      
- * 		We could add another Servlet before this page and 
- * 		after ClassList.jsp to put selected rows classid in session.	
- *  	We are not using this variable anywhere else	
- */
+	
 		
 		String classid = request.getParameter("classid");
 		
