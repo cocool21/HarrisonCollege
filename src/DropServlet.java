@@ -45,7 +45,7 @@ public class DropServlet extends HttpServlet {
 		
 		long studentid = (long) session.getAttribute("studentid");
 		long classid = Long.parseLong(request.getParameter("drop"));
-		
+		System.out.println(classid);
 		ProcessStudentReg.dropClass(studentid, classid);
 		
 		request.getRequestDispatcher("RegisteredClasses.jsp").forward(request, response);
