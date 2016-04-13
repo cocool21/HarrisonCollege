@@ -42,8 +42,8 @@
 		</table>
 	
 	<form action="ClassAddListServlet" method="Post">
-		
-		<input type="submit" name="add" value="add button" >
+		<input type="hidden" name="add" value="${studentid}">
+		<input type="submit" name="add" value="add class" >
 		</form>
 </body>
 </html>
