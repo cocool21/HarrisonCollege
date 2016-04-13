@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,29 +45,32 @@ public class ViewClasses extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("null")
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	HttpSession session= request.getSession();
 	
 	long instructorid= (long) session.getAttribute("teacherid");
 	
-	String fall2015="Fall 2015";
+	String semester=request.getParameter("semester");
+	//	String fall2015="Fall 2015";
 	
-	// int c=001;
+	// Still need to get semester from user- query prepared for that
 		
 		List<HcClass> classList = null;
+		
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String qString = "SELECT h FROM HcClass h "
-				+ "where h.hcInstructor.instructorid="+ instructorid 
-				+" and h.semester like 'Fall 2015'";
+				+ "where h.hcInstructor.instructorid="+ instructorid ;
+			//	+" and h.semester="+semester;
 			
 		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		
 		try {
-			HcClass found=q.getSingleResult();
-			classList.add(found);                   //adding rows to classList
+			
 		
+			                   
+		  classList = q.getResultList();
 			
 			session.setAttribute("classList", classList);
 	//		String name=found.getInstructorname();

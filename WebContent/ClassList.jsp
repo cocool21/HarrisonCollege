@@ -49,6 +49,10 @@ Welcome Prof. ${Name}
 	<form action="ReturnToMenu" method="post">
 	<input type="submit" value="Return to menu">
 </form>
+
+<form action="Logout" method="post">
+	<input type="submit" value="Logout">
+</form>
   
   
 </body>

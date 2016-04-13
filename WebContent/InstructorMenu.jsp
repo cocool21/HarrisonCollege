@@ -32,7 +32,8 @@ ${teacherid};
 </form>
 
  <form action="ViewClasses" method="post">
-  <input type="submit" name="instructor" value="View Classes" > <br>
+ <input type="submit" name="instructor" value="View Classes" > <br>  
+ 
 </form>
 
  <form action="ViewSpreadsheet" method="post">
@@ -41,6 +42,9 @@ ${teacherid};
 
 <br>
 
+<form action="Logout" method="post">
+	<input type="submit" value="Logout">
+</form>
 
 </body>
 </html>
