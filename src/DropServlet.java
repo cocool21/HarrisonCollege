@@ -78,7 +78,6 @@ public class DropServlet extends HttpServlet {
 	        em.close();
 		}
 		
-		System.out.println(session.getAttribute("studentid"));
 		request.setAttribute("registeredlist", registeredList);
 		request.getRequestDispatcher("RegisteredClasses.jsp").forward(request, response);
 	}
