@@ -5,7 +5,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="StudentMenu.jsp">Home</a></li>
-			<li><a href="login.jsp">Logout</a></li>
+			<li><a href="Logout">Logout</a></li>
 
 		</ul>
 	</div>
