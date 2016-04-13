@@ -12,7 +12,6 @@ public class TestRoster {
 	@Test
 	public void testGetRoster() {
 		
-		
 		List<HcStudentreg> roster = null;
 		
 		roster = getRoster.getStudentRoster(1);
