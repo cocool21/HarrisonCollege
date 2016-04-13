@@ -37,7 +37,7 @@
 			</tr>
 		</c:forEach>
 		
-		<form action="AddDropServlet" method="Post">
+		<form action="ClassAddListServlet" method="Post">
 		
 		<input type="submit" name="add" value="add button" >
 		</form>

@@ -19,7 +19,7 @@ import model.HcClass;
 /**
  * Servlet implementation class AddDropServlet
  */
-@WebServlet("/AddDropServlet")
+@WebServlet("/ClassAddListServlet")
 public class ClassAddListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
