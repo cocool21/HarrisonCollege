@@ -12,11 +12,9 @@ public class TestRoster {
 	@Test
 	public void testGetRoster() {
 		
-		
 		List<HcStudentreg> roster = null;
 		
 		roster = getRoster.getStudentRoster(1);
-
 			
 				System.out.println("Test if list is retrieved") ;
 			

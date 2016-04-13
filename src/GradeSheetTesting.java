@@ -35,44 +35,50 @@ public class GradeSheetTesting extends HttpServlet {
 		
 
 		HttpSession session = request.getSession();
-		List<HcClass> classList=null;
-		long count=0; 
-		int user_id=0;
+		
 		ViewGradeSheetDb vgs = new ViewGradeSheetDb();
+		List<HcClass> classList=null;
 		List<HcStudentreg> studentClassList=null;
+		long count=0; 
+		long instructor_id=0, class_id=0;
+		String semester=null;
+		String message=null;
 
 
-		//assume instructorid in session is available to me
+		//assume instructorid, userid and semester are in session and available to me
 		//		session.setAttribute("instructorid", 1);
 		//		
-		//		user_id = (int)session.getAttribute("instructorid");
+//				instructor_id = (long)session.getAttribute("instructorid");
+//				semester = (String)session.getAttribute("semester");
+//				class_id = (long)session.getAttribute("classid");
 
 
 		//count = vgs.findAnyClasses((int)session.getAttribute("instructorid"));
-		count = vgs.findAnyClasses(1);
-
-		System.out.println("==>count<==========" + count);
-		String message="count is " + count;
+//		count = vgs.findAnyClasses(1);
+//
+//		System.out.println("==>count<==========" + count);
+//		message="count is " + count;
 
 //		request.setAttribute("message", message);
 //		request.getRequestDispatcher("/gradeSheetOutput.jsp").forward(request, response);
 //Can't do at both places
 
 
-		if(count > 0)
-		{
-			System.out.println("im here");
-			classList = vgs.findAllClassesList(1).getResultList();
+//		if(count > 0)
+//		{
+//			System.out.println("im here");
 			
-			
-			studentClassList = vgs.findAllClassStudentList(1).getResultList();
-			
-			
+			studentClassList = ViewGradeSheetDb.findAllClassStudentReg(1, 1, "Fall 2015");
+//if(studentClassList == null)
+//	message = "no studentClassList";
+//else
+//	message = "found studentClassList";
+//System.out.println("We have something in the assignmentList:" + studentClassList);
+			request.setAttribute("studentlist",studentClassList);
 
-			System.out.println("We have something in the assignmentList:" + classList);
-			request.setAttribute("message",classList);
+//request.setAttribute("message",message);
 			request.getRequestDispatcher("/gradeSheetOutput.jsp").forward(request, response);
-		}
+		//}
 	}
 
 }

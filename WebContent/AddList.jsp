@@ -15,25 +15,26 @@
 			<th>Course Name</th>
 			<th>Instructor</th>
 			<th>Classroom</th>
+			<th>Building</th>
 			<th>Schedule</th>
 			<th>Semester</th>
 			<th>Credits</th>
 			<th>action</th>
 		</tr>
-		<form action="AddServlet" method="Post">
+
 		<c:forEach items="${addlist}" var="add">
 			<tr>
 				<td><c:out value="${add.classid}" /></td>
 				<td><c:out value="${add.hcCours.courseid}" /></td>
 				<td><c:out value="${add.hcCours.coursename}" /></td>
 				<td><c:out value="${add.hcInstructor.instructorname}" /></td>
-				<td><c:out value="${add.hcClassroom.roomnumber + class.hcClassroom.buildingname}" /></td>
+				<td><c:out value="${add.hcClassroom.roomnumber}" /></td>
+				<td><c:out value="${add.hcClassroom.buildingname}" /></td>
 				<td><c:out value="${add.schedule}" /></td>
 				<td><c:out value="${add.semester}" /></td>
 				<td><c:out value="${add.hcCours.credits}" /></td>
-				<td><input type="submit" name="add" value="${add.classid}" ></td>
+				<td><form action="AddServlet" method="Post"><input type="submit" name="add" value="${add.classid}" ></form></td>
 			</tr>
 		</c:forEach>
-		</form>
 </body>
 </html>

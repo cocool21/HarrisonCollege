@@ -20,6 +20,7 @@
 <h2>Welcome</h2>
 ${teacherid}-->
 <body>
+<<<<<<< HEAD
 	<%@ include file="Menu.jsp"%>
 	<div class="container">
 
@@ -42,7 +43,31 @@ ${teacherid}-->
 	</div>
 
 	
+=======
 
+ <form action="ViewAllCourses" method="post">
+  <input type="submit" name="instructor" value="View All Courses" > <br>
+</form> 
+
+ <form action="ViewAllClasses" method="post">
+  <input type="submit" name="instructor" value="View All Classes" > <br>
+</form>
+
+ <form action="ViewClasses" method="post">
+ <input type="submit" name="instructor" value="View Classes" > <br>  
+ 
+</form>
+
+ <form action="ViewSpreadsheet" method="post">
+  <input type="submit" name="instructor" value="View Spreadsheet" > <br>
+</form>
+
+<br>
+>>>>>>> 1bd557e03a95383145465b9334a29b8106439957
+
+<form action="Logout" method="post">
+	<input type="submit" value="Logout">
+</form>
 
 </body>
 </html>
