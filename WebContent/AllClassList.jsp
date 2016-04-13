@@ -15,6 +15,7 @@
 			<th>Course Name</th>
 			<th>Instructor</th>
 			<th>Classroom</th>
+			<th>Building</th>
 			<th>Schedule</th>
 			<th>Semester</th>
 			<th>Credits</th>
@@ -25,7 +26,8 @@
 				<td><c:out value="${aclass.hcCours.courseid}" /></td>
 				<td><c:out value="${aclass.hcCours.coursename}" /></td>
 				<td><c:out value="${aclass.hcInstructor.instructorid}" /></td>
-				<td><c:out value="${aclass.hcClassroom.roomnumber + aclass.hcClassroom.buildingname}" /></td>
+				<td><c:out value="${aclass.hcClassroom.roomnumber}" /></td>
+				<td><c:out value="${aclass.hcClassroom.buildingname}" /></td>
 				<td><c:out value="${aclass.schedule}" /></td>
 				<td><c:out value="${aclass.semester}" /></td>
 				<td><c:out value="${aclass.hcCours.credits}" /></td>
