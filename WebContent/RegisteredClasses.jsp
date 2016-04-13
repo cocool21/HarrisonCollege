@@ -38,11 +38,11 @@
 				<input type="submit" name="drop" value="{registered.classid}" ></form></td>
 			</tr>
 		</c:forEach>
-		
-		<form action="ClassAddListServlet" method="Post">
+		</table>
+	
+	<form action="ClassAddListServlet" method="Post">
 		
 		<input type="submit" name="add" value="add button" >
 		</form>
-	</table>
 </body>
 </html>
