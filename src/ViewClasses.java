@@ -73,9 +73,7 @@ public class ViewClasses extends HttpServlet {
 		  classList = q.getResultList();
 			
 			session.setAttribute("classList", classList);
-	//		String name=found.getInstructorname();
-	//		session.setAttribute("Name", name);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
