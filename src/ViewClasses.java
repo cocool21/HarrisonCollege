@@ -44,31 +44,33 @@ public class ViewClasses extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("null")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	HttpSession session= request.getSession();
 	
 	long instructorid= (long) session.getAttribute("teacherid");
 	
+	String fall2015="Fall 2015";
 	
-	
-	int c=001;
+	// int c=001;
 		
 		List<HcClass> classList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT h FROM HcInstructor h "
-				+ "where h.instructorid="+ instructorid;
+		String qString = "SELECT h FROM HcClass h "
+				+ "where h.hcInstructor.instructorid="+ instructorid 
+				+" and h.semester like 'Fall 2015'";
 			
-		TypedQuery<HcInstructor> q = em.createQuery(qString, HcInstructor.class);
+		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		
 		try {
-			HcInstructor found=q.getSingleResult();
-			classList=found.getHcClasses();
+			HcClass found=q.getSingleResult();
+			classList.add(found);                   //adding rows to classList
 		
 			
 			session.setAttribute("classList", classList);
-			String name=found.getInstructorname();
-			session.setAttribute("Name", name);
+	//		String name=found.getInstructorname();
+	//		session.setAttribute("Name", name);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

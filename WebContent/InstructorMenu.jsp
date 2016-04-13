@@ -35,17 +35,12 @@ ${teacherid};
   <input type="submit" name="instructor" value="View Classes" > <br>
 </form>
 
- <form action="GetRosterByClass" method="post">
-  <input type="submit" name="instructor" value="Get Roster By Class" > <br>
-</form>
-
- <form action="AssignGrades" method="post">
-  <input type="submit" name="instructor" value="Assign Grades" > <br>
-</form>
-
  <form action="ViewSpreadsheet" method="post">
   <input type="submit" name="instructor" value="View Spreadsheet" > <br>
 </form>
+
+<br>
+
 
 </body>
 </html>
