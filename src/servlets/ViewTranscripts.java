@@ -38,7 +38,7 @@ public class ViewTranscripts extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
@@ -56,11 +56,11 @@ HttpSession session = request.getSession();
         
         try {
         	Transcript = ProcessStudentReg.getTranscript(studentid);
-        	request.setAttribute("Transcript", Transcript);
+        	request.setAttribute("Transcript",Transcript);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("Transcripts.jsp").forward(request, response);
+		request.getRequestDispatcher("/Transcripts.jsp").forward(request, response);
 	}
 
 }

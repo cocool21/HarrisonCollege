@@ -7,6 +7,7 @@
 <title>View Schedule</title>
 </head>
 <body>
+<%@ include file="Menu.jsp" %>
 
 </body>
 </html>

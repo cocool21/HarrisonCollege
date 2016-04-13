@@ -41,14 +41,14 @@ public class DropServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-HttpSession session = request.getSession();
+       HttpSession session = request.getSession();
 		
 		long studentid = (long) session.getAttribute("studentid");
 		long classid = Long.parseLong(request.getParameter("drop"));
 		
 		ProcessStudentReg.dropClass(studentid, classid);
 		
-		request.getRequestDispatcher("RegisteredClasses.java").forward(request, response);
+		request.getRequestDispatcher("RegisteredClasses.jsp").forward(request, response);
 	}
 
 }
