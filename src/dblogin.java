@@ -138,5 +138,15 @@ public class dblogin {
 		System.out.println((long)query.getSingleResult());
 		return (long)query.getSingleResult();
 	}
+	public TypedQuery<HcUser> searchUserName(String user_name)
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery<HcUser> query =em1.createQuery("SELECT h FROM HcUser h where h.username =:username ",HcUser.class)
+				.setParameter("username",user_name);
+				
+		 return query ;
+		
+	}
 
 }
