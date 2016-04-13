@@ -54,10 +54,10 @@ public class ClassAddListServlet extends HttpServlet {
 		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		try {
 			classList = q.getResultList();
-			request.setAttribute("addlist", classList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("addlist", classList);
 		request.getRequestDispatcher("AddList.jsp").forward(request, response);
 	}
 
