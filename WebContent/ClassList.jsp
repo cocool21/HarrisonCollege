@@ -5,12 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<table>
+<%@ include file="Menu.jsp" %>
+<table class="table">
 
-Welcome Prof. ${Name}
+
 
 <br>
 <br>
@@ -45,7 +56,7 @@ Welcome Prof. ${Name}
 	</table>
 	
 	<br>
-	
+<!-- 	
 	<form action="ReturnToMenu" method="post">
 	<input type="submit" value="Return to menu">
 </form>
@@ -53,7 +64,7 @@ Welcome Prof. ${Name}
 <form action="Logout" method="post">
 	<input type="submit" value="Logout">
 </form>
-  
+  --> 
   
 </body>
 </html>
