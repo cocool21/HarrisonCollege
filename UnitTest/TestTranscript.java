@@ -15,6 +15,6 @@ public class TestTranscript {
 		System.out.println("Test if list is retrieved") ;
 		List<HcStudentreg> list=ProcessStudentReg.getTranscript(3);
 		System.out.println("process");
-	      assertEquals(list.size(),1) ;
+	      assertEquals(list.get(0).getHcStudent().getStudentname(),"Sam") ;
 	   }
 }
