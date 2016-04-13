@@ -28,7 +28,8 @@
 				<td><c:out value="${registered.hcCours.courseid}" /></td>
 				<td><c:out value="${registered.hcCours.coursename}" /></td>
 				<td><c:out value="${registered.hcInstructor.instructorname}" /></td>
-				<td><c:out value="${registered.hcClassroom.roomnumber+registered.hcClassroom.buildingname}" /></td>
+				<td><c:out value="${registered.hcClassroom.roomnumber}" /></td>
+				<td><c:out value="${registered.hcClassroom.buildingname}" /></td>
 				<td><c:out value="${registered.schedule}" /></td>
 				<td><c:out value="${registered.semester}" /></td>
 				<td><c:out value="${registered.hcCours.credits}" /></td>
