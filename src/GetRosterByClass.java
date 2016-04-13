@@ -43,10 +43,10 @@ public class GetRosterByClass extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 	
-		long classid2 = Long.parseLong((String)request.getAttribute("classid"));
-//		String classid = request.getParameter("classid");
-//		
-//		long classid2= Long.parseLong(classid);
+
+		String classid = request.getParameter("classid");
+		
+		long classid2= Long.parseLong(classid);
 		
 		
 			List<HcStudentreg> roster = null;

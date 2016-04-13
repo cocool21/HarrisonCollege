@@ -68,7 +68,7 @@ public class AssignGrade extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("/GetRosterByClass");
+		request.getRequestDispatcher("InstructorMenu.jsp");
 	}
 
 }
