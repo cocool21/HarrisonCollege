@@ -53,24 +53,7 @@ h2{
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-=======
-=======
-<h1>Harrison College</h1>
 
-<h2>Student Menu</h2>
-
-<form action="RegisteredClasses" method="post">
- <input type="submit" name="student" value="View Registered Classes" > <br>
-</form>
-    
-    <form action="ViewAllCourses" method="post">
-  <input type="submit" name="student" value="View All Courses" > <br>
-</form> 
-    <form action="ViewAllClasses" method="post">
-  <input type="submit" name="student" value="View All Classes " > <br>
-</form> 
->>>>>>> 37b289a90546c039159d64a2ff3bcf9bb930c184
 
 </body>
 </html>
