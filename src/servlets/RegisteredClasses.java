@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import customTools.DBUtil;
 import model.HcClass;
 import model.HcStudent;
+import model.HcStudentreg;
 import model.HcUser;
 
 /**
@@ -48,20 +49,34 @@ public class RegisteredClasses extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
-		List<HcStudent> registeredList = null;
+		List<HcStudentreg> registeredList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 
-		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + session.getAttribute("studentid")+ " ORDER BY h.hcClass.classid";
-
+		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + session.getAttribute("studentid");
+		//+ " ORDER BY h.hcClass.classid";
 		//String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + ((HcUser)session.getAttribute("usersession")).getUserid()+ " ORDER BY h.hcClass.classid";
 
-		TypedQuery<HcStudent> q = em.createQuery(qString, HcStudent.class);
+		TypedQuery<HcStudentreg> q = em.createQuery(qString, HcStudentreg.class);
 		try {
 			registeredList = q.getResultList();
-			request.setAttribute("registeredlist", registeredList);
+			if(registeredList==null||registeredList.isEmpty()){
+				registeredList=null;
+			}else{
+				for(HcStudentreg record:registeredList){
+					if(record.getGrade().equalsIgnoreCase("W")){
+						registeredList.remove(record);
+					}
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+	        em.close();
 		}
+		
+		System.out.println(session.getAttribute("studentid"));
+		request.setAttribute("registeredlist", registeredList);
 		request.getRequestDispatcher("RegisteredClasses.jsp").forward(request, response);
 	}
 	}
