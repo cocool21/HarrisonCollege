@@ -26,6 +26,7 @@ h2{
 <title>Student Menu Page</title>
 </head>
 <body>
+<<<<<<< HEAD
 	
 	<%@ include file="Menu.jsp" %>
 	<div class="container">
@@ -52,5 +53,28 @@ h2{
 			</div>
 		</div>
 	</div>
+=======
+<h1>Harrison College</h1>
+
+<h2>Student Menu</h2>
+
+<form action="RegisteredClasses" method="post">
+ <input type="submit" name="student" value="View Registered Classes" > <br>
+</form>
+    
+    <form action="ViewAllCourses" method="post">
+  <input type="submit" name="student" value="View All Courses" > <br>
+</form> 
+    <form action="ViewAllClasses" method="post">
+  <input type="submit" name="student" value="View All Classes" > <br>
+</form> 
+
+<form action="ViewTranscripts" method="post">
+  <input type="submit" name="student" value="View Transcripts" > <br>
+</form> 
+<form action="Logout" method="post">
+	<input type="submit" value="Logout">
+</form>  
+>>>>>>> 6708fb33b85ffbb30d1ed856a65bf05d2b08bad4
 </body>
 </html>
