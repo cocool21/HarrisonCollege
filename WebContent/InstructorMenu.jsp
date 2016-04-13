@@ -33,11 +33,9 @@ ${teacherid}-->
 				<a href="ViewAllClasses">View All Classes</a>
 			</div>
 			<div class="panel-body">
-				<a href="ViewClasses">View Classes</a>
+				<a href="ViewClasses">View Your Classes</a>
 			</div>
-			<div class="panel-body">
-				<a href="ViewSpreadsheet">View Spreadsheet</a>
-			</div>
+		
 			
 		</div>
 	</div>
