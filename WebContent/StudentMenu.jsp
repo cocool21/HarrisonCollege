@@ -43,7 +43,7 @@ h2{
 			</div>
 			<div class="panel-body">
 
-				<a href="ViewAllClasses">View All Classes</a>
+				<a href="ViewAllClasses">View All Classes for Current Semester</a>
 			</div>
 			<div class="panel-body">
 
