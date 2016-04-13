@@ -53,6 +53,7 @@ public class loginServlet extends HttpServlet {
 				     long sid= db.getStudentID(u.getUserid());
 				     //System.out.println("student  "+sid);
 				     session.setAttribute("studentid", sid);
+				     session.setAttribute("Slogintype","student");
 				     request.getRequestDispatcher("StudentMenu.jsp").forward(request, response);
 					}
 			if(u.getHcType().equalsIgnoreCase("instructor"))
@@ -62,6 +63,7 @@ public class loginServlet extends HttpServlet {
 				//System.out.println("instructor  "+instructorid);
 				session.setAttribute("teacherid", instructorid);
 				session.setAttribute(user_name, "user_name");
+				 session.setAttribute("Ilogintype","instructor");
 				
 				request.getRequestDispatcher("InstructorMenu.jsp").forward(request, response);
 			}

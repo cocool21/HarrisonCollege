@@ -18,7 +18,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="Menu.jsp" %>
+<%@ include file="MenuInstructor.jsp" %>
 <table class="table">
 
 

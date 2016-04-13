@@ -19,7 +19,7 @@
 <title>Display Roster</title>
 </head>
 <body>
-<%@ include file="Menu.jsp" %>
+<%@ include file="MenuInstructor.jsp" %>
 Instructor: <c:out value="${teacherid}" /><br />
 Class: <c:out value="${classid}" /><br />
 	<table class="table">
@@ -47,9 +47,7 @@ Class: <c:out value="${classid}" /><br />
 	<input type="submit" value="Return to menu">
 </form>
 
-<form action="Logout" method="post">
-	<input type="submit" value="Logout">
-</form>
+
 
 </body>
 </html>

@@ -21,7 +21,7 @@
 ${teacherid}-->
 <body>
 
-	<%@ include file="Menu.jsp"%>
+	<%@ include file="MenuInstructor.jsp"%>
 	<div class="container">
 
 		<div class="panel panel-default">
