@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>${Student ID}<p>
+<p>${studentid}<p>
 <br>
 <br>
-<p>${Student Name}</p>
+<p>${student}</p>
 <table>
 <tr>
 			
