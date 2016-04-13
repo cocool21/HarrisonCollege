@@ -1,4 +1,5 @@
 import model.HcStudentreg;
+import model.HcCours;
 import model.HcStudent;
 import customTools.DBUtil;
 import javax.persistence.EntityManager;
@@ -40,15 +41,22 @@ public class AssignGrade extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HcStudentreg reg = (HcStudentreg)request.getAttribute("student");
+		long regid = Long.parseLong(request.getParameter("reg"));
 		String newGrade = request.getParameter("grade");
-		reg.setGrade(newGrade);
 		
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
+		
+		String qString = "SELECT h FROM HcStudentreg h WHERE h.regid = " + regid;
+		TypedQuery<HcStudentreg> q = em.createQuery(qString, HcStudentreg.class);
+		
 		try {
+			HcStudentreg reg = q.getSingleResult();
+			reg.setGrade(newGrade);
+			String classid = String.valueOf(reg.getHcClass().getClassid());
+			request.setAttribute("classid", classid);
+			
 			em.merge(reg);
 			trans.commit();
 		} catch (Exception e) {
@@ -58,7 +66,9 @@ public class AssignGrade extends HttpServlet {
 			em.close();
 		}
 		
-		request.getRequestDispatcher("GetRosterByClass.java");
+		
+		
+		request.getRequestDispatcher("/GetRosterByClass");
 	}
 
 }

@@ -48,16 +48,16 @@ public class ClassAddListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<HcClass> classList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT h FROM HcClass h  inner join hc_cur_semester hcs "
+		String qString = "SELECT h FROM HcClass h  inner join HcCurSemester hcs "
 				+ "on h.semester = hcs.currentsem ORDER BY h.classid";
 			
 		TypedQuery<HcClass> q = em.createQuery(qString, HcClass.class);
 		try {
 			classList = q.getResultList();
-			request.setAttribute("addlist", classList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("addlist", classList);
 		request.getRequestDispatcher("AddList.jsp").forward(request, response);
 	}
 
