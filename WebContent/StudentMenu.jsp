@@ -36,6 +36,8 @@ h2{
 <form action="ViewTranscripts" method="post">
   <input type="submit" name="student" value="View Transcripts" > <br>
 </form> 
-   
+<form action="Logout" method="post">
+	<input type="submit" value="Logout">
+</form>  
 </body>
 </html>

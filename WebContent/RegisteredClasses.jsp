@@ -25,17 +25,18 @@
 		
 		<c:forEach items="${registeredlist}" var="registered">
 			<tr>
-				<td><c:out value="${registered.classid}" /></td>
-				<td><c:out value="${registered.hcCours.courseid}" /></td>
-				<td><c:out value="${registered.hcCours.coursename}" /></td>
-				<td><c:out value="${registered.hcInstructor.instructorname}" /></td>
-				<td><c:out value="${registered.hcClassroom.roomnumber}" /></td>
-				<td><c:out value="${registered.hcClassroom.buildingname}" /></td>
-				<td><c:out value="${registered.schedule}" /></td>
-				<td><c:out value="${registered.semester}" /></td>
-				<td><c:out value="${registered.hcCours.credits}" /></td>
+				<td><c:out value="${registered.hcClass.classid}" /></td>
+				<td><c:out value="${registered.hcClass.hcCours.courseid}" /></td>
+				<td><c:out value="${registered.hcClass.hcCours.coursename}" /></td>
+				<td><c:out value="${registered.hcClass.hcInstructor.instructorname}" /></td>
+				<td><c:out value="${registered.hcClass.hcClassroom.roomnumber}" /></td>
+				<td><c:out value="${registered.hcClass.hcClassroom.buildingname}" /></td>
+				<td><c:out value="${registered.hcClass.schedule}" /></td>
+				<td><c:out value="${registered.hcClass.semester}" /></td>
+				<td><c:out value="${registered.hcClass.hcCours.credits}" /></td>
 				<td><form action="DropServlet" method="Post">
-				<input type="submit" name="drop" value="{registered.classid}" ></form></td>
+				<input type="hidden" name="drop" value="${registered.hcClass.classid}">
+				<input type="submit" value="drop" ></form></td>
 			</tr>
 		</c:forEach>
 		</table>
