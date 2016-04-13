@@ -44,7 +44,8 @@
 				<td><c:out value="${add.semester}" /></td>
 				<td><c:out value="${add.hcCours.credits}" /></td>
 				<td><form action="AddServlet" method="Post">
-						<input type="submit" name="add" value="${add.classid}">
+						<input type="submit" value="add">
+						<input type="hidden" name="add" value="${add.classid}">
 					</form></td>
 			</tr>
 		</c:forEach>
