@@ -19,6 +19,7 @@
 	
 	<p class="text-danger"> <strong>${message} </strong></p>
 	
+	
 	<table class="table table-bordered table-striped">
 		<tr>
 			<td>
