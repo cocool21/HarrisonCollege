@@ -30,7 +30,7 @@ h2{
   <input type="submit" name="student" value="View All Courses" > <br>
 </form> 
     <form action="ViewAllClasses" method="post">
-  <input type="submit" name="student" value="View All Classes" > <br>
+  <input type="submit" name="student" value="View All Classes " > <br>
 </form> 
 
 <form action="ViewTranscripts" method="post">
