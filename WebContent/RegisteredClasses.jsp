@@ -16,6 +16,7 @@
 			<th>Course Name</th>
 			<th>Instructor</th>
 			<th>Classroom</th>
+			<th>Building</th>
 			<th>Schedule</th>
 			<th>Semester</th>
 			<th>Credits</th>
