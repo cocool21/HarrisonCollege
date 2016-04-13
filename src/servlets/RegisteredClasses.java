@@ -50,7 +50,7 @@ public class RegisteredClasses extends HttpServlet {
 		
 		List<HcStudent> registeredList = null;
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + ((HcUser)session.getAttribute("usersession"))+ " ORDER BY h.Studentid";
+		String qString = "SELECT h FROM HcStudentreg h WHERE h.hcStudent.studentid = " + session.getAttribute("studentid")+ " ORDER BY h.hcClass.classid";
 		TypedQuery<HcStudent> q = em.createQuery(qString, HcStudent.class);
 		try {
 			registeredList = q.getResultList();
